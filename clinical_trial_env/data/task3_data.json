@@ -1,0 +1,231 @@
+{
+  "task_id": "task3",
+  "trials": [
+    {
+      "trial_id": "CKD_301",
+      "title": "Finerenone in Chronic Kidney Disease with Type 2 Diabetes",
+      "inclusion_criteria": "Chronic Kidney Disease Stage 3 or 4, eGFR between 15 and 59 mL/min, age 18-80, on stable ACE inhibitor or ARB therapy for at least 4 weeks",
+      "exclusion_criteria": "Dialysis within the past 6 months, Kidney transplant recipient, Uncontrolled diabetes with HbA1c above 9%, Hyperkalemia with potassium above 5.5 mEq/L"
+    },
+    {
+      "trial_id": "RA_302",
+      "title": "Upadacitinib vs. Adalimumab in Rheumatoid Arthritis",
+      "inclusion_criteria": "Rheumatoid Arthritis diagnosis per ACR/EULAR criteria, DAS28 score above 3.2, inadequate response to at least one DMARD, age 18-75",
+      "exclusion_criteria": "Active tuberculosis, Hepatitis B or Hepatitis C infection, Severe liver impairment with ALT above 3 times upper limit of normal, Active serious infection requiring IV antibiotics"
+    },
+    {
+      "trial_id": "AFIB_303",
+      "title": "Edoxaban vs. Warfarin in Non-Valvular Atrial Fibrillation",
+      "inclusion_criteria": "Non-valvular atrial fibrillation, CHA2DS2-VASc score of 2 or greater, age 18 or older, documented AF on ECG or Holter within 12 months",
+      "exclusion_criteria": "Mechanical heart valve, Active bleeding or bleeding disorder, Platelet count below 50000 per microliter, Creatinine clearance below 25 mL/min"
+    },
+    {
+      "trial_id": "COPD_304",
+      "title": "Triple Inhaler Therapy in Moderate-to-Severe COPD",
+      "inclusion_criteria": "COPD GOLD Stage II or III, FEV1 between 30% and 80% predicted, age 40 or older, current or former smoker with at least 10 pack-year history",
+      "exclusion_criteria": "Active pulmonary tuberculosis, Asthma-COPD overlap requiring biologic therapy, Lung cancer current or within past 5 years, Unstable cardiovascular disease within past 3 months"
+    },
+    {
+      "trial_id": "MDD_305",
+      "title": "Esketamine Nasal Spray for Treatment-Resistant Depression",
+      "inclusion_criteria": "Major Depressive Disorder per DSM-5 criteria, PHQ-9 score of 15 or above, inadequate response to at least 2 antidepressant trials in the current episode, age 18-65",
+      "exclusion_criteria": "Bipolar disorder, Active substance use disorder within the past 6 months, Suicidal ideation with active intent or plan, Uncontrolled hypertension with systolic above 170 mmHg"
+    }
+  ],
+  "patients": [
+    {
+      "patient_id": "P3_001",
+      "ehr": "68-year-old male with Chronic Kidney Disease, documented by nephrology. Currently on Losartan 100mg daily, stable for 8 weeks. History of Type 2 Diabetes managed with Metformin (dose-adjusted). No history of dialysis. No kidney transplant. Last potassium level 4.2 mEq/L.",
+      "hidden_labs": {
+        "eGFR": "eGFR: 42 mL/min/1.73m2 (measured 2 weeks ago)",
+        "HbA1c": "HbA1c: 7.1% (measured 1 month ago)"
+      }
+    },
+    {
+      "patient_id": "P3_002",
+      "ehr": "54-year-old female diagnosed with Rheumatoid Arthritis per ACR/EULAR criteria 4 years ago. DAS28 score: 4.8 at last rheumatology visit. Previously tried Methotrexate 20mg weekly for 6 months with inadequate response. Currently on Leflunomide. QuantiFERON-TB Gold: negative. Hepatitis B surface antigen: negative. Hepatitis C antibody: negative. No active infections.",
+      "hidden_labs": {
+        "ALT": "ALT: 32 U/L (within normal limits, ULN 35 U/L)"
+      }
+    },
+    {
+      "patient_id": "P3_003",
+      "ehr": "72-year-old male with documented non-valvular atrial fibrillation on ECG 3 months ago. CHA2DS2-VASc score: 4 (age, hypertension, diabetes, prior stroke). Currently on Apixaban 5mg twice daily. No mechanical heart valve. No active bleeding. No bleeding disorders.",
+      "hidden_labs": {
+        "Platelet count": "Platelet count: 185,000/uL",
+        "CrCl": "Creatinine clearance (CrCl): 55 mL/min (Cockcroft-Gault)"
+      }
+    },
+    {
+      "patient_id": "P3_004",
+      "ehr": "61-year-old female with COPD diagnosed 6 years ago, GOLD Stage II. Current smoker with 25 pack-year history. Currently on Tiotropium 18mcg daily and Albuterol PRN. No history of pulmonary tuberculosis. No asthma diagnosis or biologic therapy. No history of lung cancer. Last cardiac evaluation 2 months ago showed stable coronary artery disease, no acute events. FEV1: 62% predicted on last spirometry 1 month ago.",
+      "hidden_labs": {}
+    },
+    {
+      "patient_id": "P3_005",
+      "ehr": "38-year-old male diagnosed with Major Depressive Disorder per DSM-5 criteria. Current episode has been ongoing for 14 months. Failed adequate trials of Sertraline 200mg daily (8 weeks) and Venlafaxine 225mg daily (10 weeks) with minimal improvement. No history of Bipolar disorder per psychiatric evaluation. No substance use disorder. Denies suicidal ideation. BP: 128/82 mmHg.",
+      "hidden_labs": {
+        "PHQ-9": "PHQ-9 score: 19 (moderately severe depression)"
+      }
+    },
+    {
+      "patient_id": "P3_006",
+      "ehr": "75-year-old male with Chronic Kidney Disease documented by nephrology 3 years ago. On Enalapril 10mg daily, stable for 12 weeks. History of Type 2 Diabetes. Received a kidney transplant 4 years ago, currently on Tacrolimus and Mycophenolate. Last potassium: 4.8 mEq/L. No recent dialysis.",
+      "hidden_labs": {
+        "eGFR": "eGFR: 38 mL/min/1.73m2",
+        "HbA1c": "HbA1c: 7.8%"
+      }
+    },
+    {
+      "patient_id": "P3_007",
+      "ehr": "49-year-old female with Rheumatoid Arthritis per ACR/EULAR criteria. DAS28 score: 5.1. Failed Methotrexate and Sulfasalazine. QuantiFERON-TB Gold: POSITIVE, confirmed active pulmonary tuberculosis on chest CT and sputum culture. Currently starting TB treatment. Hepatitis panel negative.",
+      "hidden_labs": {
+        "ALT": "ALT: 28 U/L (normal)"
+      }
+    },
+    {
+      "patient_id": "P3_008",
+      "ehr": "66-year-old male with non-valvular atrial fibrillation documented on Holter monitor 6 months ago. CHA2DS2-VASc score: 3. No mechanical heart valve. No active bleeding.",
+      "hidden_labs": {
+        "Platelet count": "Platelet count: 38,000/uL (thrombocytopenia, under hematology evaluation)",
+        "CrCl": "Creatinine clearance: 62 mL/min"
+      }
+    },
+    {
+      "patient_id": "P3_009",
+      "ehr": "55-year-old male with COPD, GOLD Stage III. Former smoker, quit 3 years ago, 40 pack-year history. On Fluticasone/Salmeterol and Tiotropium. No pulmonary TB. No asthma overlap or biologic use. No lung cancer. Cardiac status stable. FEV1: 38% predicted.",
+      "hidden_labs": {}
+    },
+    {
+      "patient_id": "P3_010",
+      "ehr": "29-year-old female with Major Depressive Disorder per DSM-5. Current episode 10 months. Failed Fluoxetine 40mg (12 weeks) and Duloxetine 120mg (8 weeks). Psychiatric evaluation rules out Bipolar disorder. No substance use disorder. No suicidal ideation with intent. BP: 118/74 mmHg.",
+      "hidden_labs": {
+        "PHQ-9": "PHQ-9 score: 22 (severe depression)"
+      }
+    },
+    {
+      "patient_id": "P3_011",
+      "ehr": "70-year-old female with Chronic Kidney Disease. On Ramipril 5mg daily for 6 weeks. Type 2 Diabetes managed with insulin. No dialysis history. No transplant. Potassium: 4.5 mEq/L.",
+      "hidden_labs": {
+        "eGFR": "eGFR: 28 mL/min/1.73m2",
+        "HbA1c": "HbA1c: 9.4% (poorly controlled)"
+      }
+    },
+    {
+      "patient_id": "P3_012",
+      "ehr": "43-year-old male with Rheumatoid Arthritis per ACR/EULAR criteria, diagnosed 6 years ago. DAS28 score: 3.8. Failed Methotrexate 25mg weekly and Hydroxychloroquine 400mg daily. QuantiFERON-TB Gold: negative. Hepatitis B surface antigen: negative. Hepatitis C antibody: negative. No active infections. ALT: 24 U/L, AST: 20 U/L. Liver function normal.",
+      "hidden_labs": {}
+    },
+    {
+      "patient_id": "P3_013",
+      "ehr": "78-year-old female with non-valvular atrial fibrillation confirmed on ECG 2 months ago. CHA2DS2-VASc score: 5. Has a mechanical mitral valve prosthesis implanted 10 years ago. On Warfarin with target INR 2.5-3.5. No active bleeding. Platelet count: 210,000/uL. CrCl: 48 mL/min.",
+      "hidden_labs": {}
+    },
+    {
+      "patient_id": "P3_014",
+      "ehr": "58-year-old male with COPD, GOLD Stage II. Former smoker, quit 5 years ago, 30 pack-year history. On Umeclidinium/Vilanterol daily. No pulmonary TB. Diagnosed with small cell lung cancer 3 years ago, completed treatment, currently in remission but within 5-year window. FEV1: 65% predicted. Cardiac status stable.",
+      "hidden_labs": {}
+    },
+    {
+      "patient_id": "P3_015",
+      "ehr": "42-year-old female presenting with persistent low mood and anhedonia. Diagnosed with Major Depressive Disorder per DSM-5. Current episode: 8 months. Tried Escitalopram 20mg (10 weeks) and Bupropion 450mg (8 weeks), both inadequate. Psychiatric assessment: no Bipolar features. Reports social drinking, 2-3 drinks per week, no criteria met for substance use disorder. Denies any suicidal thoughts. BP: 132/84 mmHg.",
+      "hidden_labs": {
+        "PHQ-9": "PHQ-9 score: 17 (moderately severe depression)"
+      }
+    },
+    {
+      "patient_id": "P3_016",
+      "ehr": "64-year-old male with Chronic Kidney Disease. On Valsartan 160mg daily, stable for 10 weeks. Type 2 Diabetes on Empagliflozin. No dialysis. No transplant. Potassium: 5.0 mEq/L. eGFR: 34 mL/min. HbA1c: 8.2%. No hyperkalemia above 5.5.",
+      "hidden_labs": {}
+    },
+    {
+      "patient_id": "P3_017",
+      "ehr": "52-year-old female with Rheumatoid Arthritis per ACR/EULAR criteria. DAS28 score: 4.2. Failed Methotrexate. QuantiFERON-TB: negative. Hepatitis B: negative. Hepatitis C antibody: POSITIVE, confirmed active Hepatitis C infection with detectable viral load. Currently untreated for HCV.",
+      "hidden_labs": {
+        "ALT": "ALT: 68 U/L (elevated, likely HCV-related)"
+      }
+    },
+    {
+      "patient_id": "P3_018",
+      "ehr": "80-year-old male with non-valvular atrial fibrillation on ECG 4 months ago. CHA2DS2-VASc score: 6. No mechanical valve. No active bleeding or bleeding disorder. Platelet count: 165,000/uL. CrCl: 42 mL/min.",
+      "hidden_labs": {}
+    },
+    {
+      "patient_id": "P3_019",
+      "ehr": "47-year-old female with COPD, GOLD Stage II. Current smoker, 20 pack-year history. Also diagnosed with allergic asthma, currently receiving Omalizumab (biologic therapy) for asthma-COPD overlap. On Fluticasone/Formoterol inhaler. No pulmonary TB. No lung cancer. FEV1: 58% predicted.",
+      "hidden_labs": {}
+    },
+    {
+      "patient_id": "P3_020",
+      "ehr": "35-year-old male. Psychiatric evaluation reveals Major Depressive Disorder per DSM-5 with current episode lasting 11 months. Failed Paroxetine 40mg (10 weeks) and Mirtazapine 45mg (8 weeks). Recent psychiatric reassessment identified hypomanic episodes in history — revised diagnosis to Bipolar II Disorder. No substance use disorder. No suicidal ideation. BP: 122/78 mmHg.",
+      "hidden_labs": {
+        "PHQ-9": "PHQ-9 score: 20"
+      }
+    },
+    {
+      "patient_id": "P3_021",
+      "ehr": "59-year-old male with Chronic Kidney Disease stage documented by nephrology. On Lisinopril 20mg daily for 16 weeks. Type 2 Diabetes managed with Sitagliptin. No dialysis history. No transplant. Potassium: 4.3 mEq/L.",
+      "hidden_labs": {
+        "eGFR": "eGFR: 52 mL/min/1.73m2",
+        "HbA1c": "HbA1c: 7.6%"
+      }
+    },
+    {
+      "patient_id": "P3_022",
+      "ehr": "67-year-old female with Rheumatoid Arthritis per ACR/EULAR criteria, 8 years duration. DAS28 score: 2.8 (low disease activity). On Methotrexate 15mg weekly with good response. QuantiFERON-TB: negative. Hepatitis panel: negative. ALT: 22 U/L. No active infections.",
+      "hidden_labs": {}
+    },
+    {
+      "patient_id": "P3_023",
+      "ehr": "71-year-old male with non-valvular atrial fibrillation documented on Holter 8 months ago. CHA2DS2-VASc score: 3. No mechanical valve. Recently hospitalized for upper GI bleeding from a gastric ulcer, currently being treated. Endoscopy performed 1 week ago.",
+      "hidden_labs": {
+        "Platelet count": "Platelet count: 142,000/uL",
+        "CrCl": "Creatinine clearance: 58 mL/min"
+      }
+    },
+    {
+      "patient_id": "P3_024",
+      "ehr": "63-year-old male with COPD, GOLD Stage III. Former smoker, quit 2 years ago, 35 pack-year history. On triple inhaler therapy (Fluticasone/Umeclidinium/Vilanterol). No pulmonary TB. No asthma overlap or biologics. No lung cancer. Stable cardiovascular status.",
+      "hidden_labs": {
+        "FEV1": "FEV1: 45% predicted (measured 3 weeks ago)"
+      }
+    },
+    {
+      "patient_id": "P3_025",
+      "ehr": "51-year-old female with Major Depressive Disorder per DSM-5. Current episode: 18 months. Failed Citalopram 40mg (12 weeks) and Desvenlafaxine 100mg (10 weeks). No Bipolar disorder. Active alcohol use disorder — consuming 8-10 drinks daily, meets DSM-5 criteria for severe alcohol use disorder, declined treatment referral. Denies suicidal ideation. BP: 124/80 mmHg. PHQ-9 score: 21.",
+      "hidden_labs": {}
+    },
+    {
+      "patient_id": "P3_026",
+      "ehr": "73-year-old female with Chronic Kidney Disease. On Candesartan 16mg daily for 20 weeks. History of Type 2 Diabetes. No dialysis. No transplant. Potassium: 4.6 mEq/L. Recent labs: eGFR 22 mL/min, HbA1c 8.0%.",
+      "hidden_labs": {}
+    },
+    {
+      "patient_id": "P3_027",
+      "ehr": "46-year-old male with Rheumatoid Arthritis per ACR/EULAR criteria. DAS28 score: 4.5. Failed Methotrexate and Leflunomide. QuantiFERON-TB: negative. Hepatitis B: negative. Hepatitis C: negative. No active infections.",
+      "hidden_labs": {
+        "ALT": "ALT: 118 U/L (elevated, 3.4 times ULN of 35 U/L)"
+      }
+    },
+    {
+      "patient_id": "P3_028",
+      "ehr": "56-year-old female with non-valvular atrial fibrillation on ECG 5 months ago. CHA2DS2-VASc score: 4. No mechanical valve. No active bleeding. No bleeding disorder.",
+      "hidden_labs": {
+        "Platelet count": "Platelet count: 198,000/uL",
+        "CrCl": "Creatinine clearance: 68 mL/min"
+      }
+    },
+    {
+      "patient_id": "P3_029",
+      "ehr": "44-year-old male with COPD, GOLD Stage II. Current smoker, 15 pack-year history. On Tiotropium and Albuterol PRN. No pulmonary TB. No asthma overlap. No lung cancer. Cardiovascular status stable. FEV1: 72% predicted on spirometry last month.",
+      "hidden_labs": {}
+    },
+    {
+      "patient_id": "P3_030",
+      "ehr": "60-year-old male with Major Depressive Disorder per DSM-5 criteria. Current episode: 9 months. Failed Sertraline 200mg (10 weeks) and Amitriptyline 150mg (8 weeks). No Bipolar disorder. No substance use disorder. Expresses passive death wish but denies active suicidal ideation, intent, or plan. BP: 164/98 mmHg.",
+      "hidden_labs": {
+        "PHQ-9": "PHQ-9 score: 16"
+      }
+    }
+  ]
+}

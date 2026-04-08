@@ -1,0 +1,125 @@
+{
+  "task_id": "task2",
+  "trials": [
+    {
+      "trial_id": "DIAB_201",
+      "title": "Semaglutide vs. Placebo in Uncontrolled Type 2 Diabetes",
+      "inclusion_criteria": "Type 2 Diabetes Mellitus, HbA1c between 7.0% and 10.0%, age 30-65, on stable oral hypoglycemic therapy for at least 3 months",
+      "exclusion_criteria": "Type 1 Diabetes, eGFR below 30 mL/min, Active liver disease or ALT greater than 3 times upper limit of normal, History of pancreatitis"
+    },
+    {
+      "trial_id": "HTN_202",
+      "title": "Renal Denervation for Resistant Essential Hypertension",
+      "inclusion_criteria": "Essential Hypertension, systolic blood pressure above 140 mmHg on two or more readings, age 18-80, on at least one antihypertensive medication",
+      "exclusion_criteria": "Secondary hypertension, Pregnancy, Heart failure NYHA Class IV, eGFR below 40 mL/min"
+    },
+    {
+      "trial_id": "ONCO_203",
+      "title": "Nivolumab Plus Chemotherapy in Advanced NSCLC",
+      "inclusion_criteria": "Histologically confirmed Non-Small Cell Lung Cancer Stage IIIB or IV, ECOG performance status 0 or 1, age 18 or older, adequate organ function",
+      "exclusion_criteria": "Prior immunotherapy treatment, Autoimmune disease requiring systemic immunosuppressive treatment, Untreated brain metastases, Active hepatitis B or C"
+    }
+  ],
+  "patients": [
+    {
+      "patient_id": "P2_001",
+      "ehr": "56-year-old male presenting for medication review. Current medications include Metformin 1000mg twice daily and Glipizide 5mg daily. Recent laboratory results: HbA1c 8.2%, fasting glucose 186 mg/dL, eGFR 65 mL/min, ALT 22 U/L, AST 18 U/L. Medications stable for 5 months. No history of pancreatitis. No history of insulin use or diabetic ketoacidosis.",
+      "hidden_labs": {}
+    },
+    {
+      "patient_id": "P2_002",
+      "ehr": "42-year-old female with fatigue and polyuria. Started on insulin at age 12 after presenting with diabetic ketoacidosis. Positive GAD65 antibodies. Currently on insulin pump therapy with Humalog. Recent HbA1c 8.8%. C-peptide level is undetectable. eGFR 92 mL/min. ALT 19 U/L.",
+      "hidden_labs": {}
+    },
+    {
+      "patient_id": "P2_003",
+      "ehr": "62-year-old female on Lisinopril 20mg daily and Amlodipine 5mg daily. Office visit vitals: blood pressure 158/96 mmHg. Follow-up reading 10 minutes later: 162/94 mmHg. Previous visit BP: 154/92 mmHg. No peripheral edema. No orthopnea or PND. Echocardiogram shows normal LV function, EF 60%. eGFR 72 mL/min. Not pregnant.",
+      "hidden_labs": {}
+    },
+    {
+      "patient_id": "P2_004",
+      "ehr": "71-year-old male referred from pulmonology. CT-guided biopsy performed 2 weeks ago: histologically confirmed adenocarcinoma of the lung. PET-CT shows primary mass in right upper lobe with mediastinal lymph node involvement and contralateral lung nodules, consistent with Stage IV disease. ECOG performance status: 1. Brain MRI: no evidence of metastases. CBC, CMP within normal limits. No prior chemotherapy or immunotherapy. No history of autoimmune conditions. Hepatitis B surface antigen negative, Hepatitis C antibody negative.",
+      "hidden_labs": {}
+    },
+    {
+      "patient_id": "P2_005",
+      "ehr": "34-year-old male, recently diagnosed with elevated blood sugars. Started on Metformin 500mg twice daily 4 months ago. Recent HbA1c 7.4%, fasting glucose 152 mg/dL. BMI 31.2. eGFR 110 mL/min. ALT 28 U/L. No history of pancreatitis. Family history significant for Type 2 Diabetes in mother and maternal grandmother. No insulin use.",
+      "hidden_labs": {}
+    },
+    {
+      "patient_id": "P2_006",
+      "ehr": "58-year-old female on Metformin 850mg twice daily and Sitagliptin 100mg daily for the past 6 months. Recent HbA1c 6.8%, fasting glucose 118 mg/dL. eGFR 78 mL/min. ALT 20 U/L. BMI 28.5. No history of pancreatitis. Well-controlled with current regimen.",
+      "hidden_labs": {}
+    },
+    {
+      "patient_id": "P2_007",
+      "ehr": "45-year-old male on Losartan 100mg daily and Hydrochlorothiazide 25mg daily. Office vitals: blood pressure 148/94 mmHg. Repeat reading: 152/96 mmHg. Previous visit 2 weeks ago: 146/92 mmHg. 24-hour ambulatory BP monitoring confirms sustained elevation. Renal artery ultrasound: no evidence of stenosis. Aldosterone-to-renin ratio normal. No edema. Echocardiogram: EF 58%, no wall motion abnormalities. eGFR 88 mL/min. Not pregnant.",
+      "hidden_labs": {}
+    },
+    {
+      "patient_id": "P2_008",
+      "ehr": "63-year-old male on Metformin 1000mg twice daily. Recent HbA1c 9.2%. Also noted: eGFR 24 mL/min, Creatinine 2.8 mg/dL. Referred to nephrology for evaluation of declining kidney function. ALT 18 U/L. No history of pancreatitis. Medications stable for 4 months.",
+      "hidden_labs": {}
+    },
+    {
+      "patient_id": "P2_009",
+      "ehr": "68-year-old female. Biopsy-confirmed squamous cell carcinoma of the lung, Stage IIIB. ECOG performance status 0. Brain MRI negative for metastases. Previously received 4 cycles of Pembrolizumab as part of a community oncology protocol 8 months ago, discontinued due to progression. No autoimmune disease. Hepatitis panel negative. Adequate organ function on labs.",
+      "hidden_labs": {}
+    },
+    {
+      "patient_id": "P2_010",
+      "ehr": "50-year-old male on Amlodipine 10mg daily and Metoprolol 50mg twice daily. Office vitals: BP 138/86 mmHg. Repeat: 136/84 mmHg. Previous visit: 140/88 mmHg. Renal function normal, eGFR 95 mL/min. Echocardiogram: EF 55%. No signs of secondary hypertension. Not pregnant.",
+      "hidden_labs": {}
+    },
+    {
+      "patient_id": "P2_011",
+      "ehr": "39-year-old female on Metformin 750mg twice daily and Empagliflozin 10mg daily for 4 months. Recent HbA1c 7.8%. eGFR 98 mL/min. ALT 24 U/L. BMI 33.1. No insulin use. No ketoacidosis history. Family history of Type 2 Diabetes. No history of pancreatitis.",
+      "hidden_labs": {}
+    },
+    {
+      "patient_id": "P2_012",
+      "ehr": "55-year-old male with pheochromocytoma diagnosed on biochemical testing (elevated 24-hour urinary catecholamines) and confirmed by adrenal CT. Currently on Phenoxybenzamine 20mg twice daily. Office BP readings: 168/102 mmHg, 172/98 mmHg. Awaiting surgical planning. eGFR 80 mL/min.",
+      "hidden_labs": {}
+    },
+    {
+      "patient_id": "P2_013",
+      "ehr": "60-year-old male on Glimepiride 4mg daily and Metformin 1000mg twice daily for 6 months. Recent HbA1c 10.4%. Fasting glucose 242 mg/dL. eGFR 55 mL/min. ALT 30 U/L. No pancreatitis history. Considering insulin initiation due to poor control. BMI 29.8.",
+      "hidden_labs": {}
+    },
+    {
+      "patient_id": "P2_014",
+      "ehr": "73-year-old female. CT chest incidental finding: 2.5 cm spiculated mass in left lower lobe. Biopsy: adenocarcinoma of the lung. PET-CT: primary mass with ipsilateral mediastinal lymphadenopathy, no distant metastases. Staging: Stage IIIB. ECOG 1. Brain MRI: no metastases. No prior chemotherapy or immunotherapy. No autoimmune disease. Hepatitis B and C negative. CBC and CMP normal.",
+      "hidden_labs": {}
+    },
+    {
+      "patient_id": "P2_015",
+      "ehr": "47-year-old male on Lisinopril 40mg daily, Amlodipine 10mg daily, and Chlorthalidone 25mg daily. Office vitals: BP 156/98 mmHg. Repeat: 160/100 mmHg. Previous visit: 158/96 mmHg. Echocardiogram: NYHA Class IV heart failure with EF 20%, severe global hypokinesis, recurrent hospitalizations for decompensation. eGFR 62 mL/min. Not pregnant.",
+      "hidden_labs": {}
+    },
+    {
+      "patient_id": "P2_016",
+      "ehr": "52-year-old female on Metformin 500mg twice daily for 5 months. Recent HbA1c 7.2%. eGFR 85 mL/min. ALT 142 U/L (upper limit of normal: 35 U/L), AST 98 U/L. Hepatology referral pending for evaluation of elevated liver enzymes. Abdominal ultrasound shows hepatic steatosis. No history of pancreatitis.",
+      "hidden_labs": {}
+    },
+    {
+      "patient_id": "P2_017",
+      "ehr": "66-year-old male. Biopsy-confirmed large cell carcinoma of the lung, Stage IV with bone metastases. ECOG performance status 0. Brain MRI: no metastases. No prior immunotherapy or chemotherapy. Diagnosed with systemic lupus erythematosus 5 years ago, currently on Prednisone 15mg daily and Hydroxychloroquine 200mg twice daily. Hepatitis panel negative.",
+      "hidden_labs": {}
+    },
+    {
+      "patient_id": "P2_018",
+      "ehr": "28-year-old female. On Valsartan 160mg daily and Nifedipine 30mg extended-release daily. Office vitals: BP 144/92 mmHg, repeat 148/90 mmHg. Previous visit: 146/94 mmHg. Currently 16 weeks pregnant per dating ultrasound. eGFR 112 mL/min. No secondary hypertension workup abnormalities.",
+      "hidden_labs": {}
+    },
+    {
+      "patient_id": "P2_019",
+      "ehr": "61-year-old male on Metformin 1000mg twice daily and Pioglitazone 30mg daily, stable for 7 months. Recent HbA1c 8.6%. eGFR 48 mL/min. ALT 26 U/L. History of acute pancreatitis requiring hospitalization 2 years ago, attributed to gallstones (cholecystectomy performed). BMI 30.5. No insulin use.",
+      "hidden_labs": {}
+    },
+    {
+      "patient_id": "P2_020",
+      "ehr": "74-year-old male on Irbesartan 300mg daily and Indapamide 1.5mg daily. Office vitals: BP 144/88 mmHg, repeat: 146/90 mmHg. Previous visit: 148/92 mmHg. Echocardiogram: EF 50%, mild diastolic dysfunction, no NYHA Class IV symptoms. Ambulatory BP confirms sustained systolic hypertension. eGFR 58 mL/min. No evidence of secondary hypertension. Not pregnant.",
+      "hidden_labs": {}
+    }
+  ]
+}

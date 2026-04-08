@@ -1,0 +1,63 @@
+{
+  "task_id": "task1",
+  "trials": [
+    {
+      "trial_id": "CARDIO_001",
+      "title": "Sacubitril/Valsartan in Chronic Heart Failure",
+      "inclusion_criteria": "Diagnosed with Heart Failure, NYHA Class II or III, age 40-75, stable on current heart failure therapy for at least 4 weeks",
+      "exclusion_criteria": "Active Asthma, Chronic Kidney Disease Stage 4 or higher, Pregnancy, Severe hepatic impairment"
+    }
+  ],
+  "patients": [
+    {
+      "patient_id": "P1_001",
+      "ehr": "62-year-old male presenting for routine follow-up. History: Diagnosed with Heart Failure, NYHA Class II, diagnosed 3 years ago. Currently stable on Enalapril 10mg BID and Metoprolol 50mg daily for the past 8 weeks. Vitals: BP 128/78 mmHg, HR 68 bpm. No history of Asthma. No history of Chronic Kidney Disease. Last eGFR 82 mL/min. Not pregnant. Liver function tests within normal limits.",
+      "hidden_labs": {}
+    },
+    {
+      "patient_id": "P1_002",
+      "ehr": "55-year-old female referred for heart failure management. History: Diagnosed with Heart Failure, NYHA Class III. Also diagnosed with Active Asthma, currently on Montelukast 10mg daily and Albuterol inhaler PRN. Stable on Carvedilol 25mg BID for 6 weeks. Vitals: BP 132/84 mmHg, HR 72 bpm. No Chronic Kidney Disease. eGFR 91 mL/min. Not pregnant.",
+      "hidden_labs": {}
+    },
+    {
+      "patient_id": "P1_003",
+      "ehr": "48-year-old male with progressive dyspnea. History: Diagnosed with Heart Failure, NYHA Class II. Also diagnosed with Chronic Kidney Disease Stage 5, on peritoneal dialysis. Current medications: Furosemide 80mg daily, Carvedilol 12.5mg BID for 5 weeks. Vitals: BP 142/88 mmHg, HR 76 bpm. Last eGFR 12 mL/min. No Asthma. Not pregnant.",
+      "hidden_labs": {}
+    },
+    {
+      "patient_id": "P1_004",
+      "ehr": "70-year-old female with stable heart failure. History: Diagnosed with Heart Failure, NYHA Class III, diagnosed 5 years ago. Stable on Lisinopril 20mg daily and Bisoprolol 5mg daily for 12 weeks. Vitals: BP 118/72 mmHg, HR 64 bpm. No history of Asthma. No Chronic Kidney Disease. eGFR 68 mL/min. Not pregnant. Liver function normal.",
+      "hidden_labs": {}
+    },
+    {
+      "patient_id": "P1_005",
+      "ehr": "38-year-old male with newly diagnosed heart failure. History: Diagnosed with Heart Failure, NYHA Class II, diagnosed 2 months ago. Stable on Ramipril 5mg daily and Metoprolol 25mg BID for 6 weeks. Vitals: BP 124/76 mmHg, HR 70 bpm. No Asthma. No Chronic Kidney Disease. eGFR 105 mL/min. Not pregnant.",
+      "hidden_labs": {}
+    },
+    {
+      "patient_id": "P1_006",
+      "ehr": "65-year-old male, former smoker, presenting for heart failure follow-up. History: Diagnosed with Heart Failure, NYHA Class II, stable for 2 years. On Enalapril 20mg daily and Carvedilol 25mg BID for 16 weeks. Vitals: BP 130/80 mmHg, HR 66 bpm. No Active Asthma. No Chronic Kidney Disease. eGFR 74 mL/min. Not pregnant. Liver function tests normal.",
+      "hidden_labs": {}
+    },
+    {
+      "patient_id": "P1_007",
+      "ehr": "44-year-old female with worsening heart failure symptoms. History: Diagnosed with Heart Failure, NYHA Class III. Currently 28 weeks pregnant, being managed by maternal-fetal medicine. Pregnancy confirmed. Stable on Hydralazine and Nitrates for 5 weeks (ACE inhibitors discontinued due to Pregnancy). Vitals: BP 136/82 mmHg, HR 80 bpm. No Asthma. No Chronic Kidney Disease. eGFR 95 mL/min.",
+      "hidden_labs": {}
+    },
+    {
+      "patient_id": "P1_008",
+      "ehr": "58-year-old male with severe heart failure. History: Diagnosed with Heart Failure, NYHA Class IV, with recurrent hospitalizations. Requires continuous IV inotrope support. On Milrinone infusion, Furosemide 120mg IV daily, Carvedilol 3.125mg BID for 4 weeks. Vitals: BP 96/62 mmHg, HR 92 bpm. No Asthma. No Chronic Kidney Disease Stage 4 or higher. eGFR 58 mL/min. Not pregnant.",
+      "hidden_labs": {}
+    },
+    {
+      "patient_id": "P1_009",
+      "ehr": "52-year-old female with compensated heart failure. History: Diagnosed with Heart Failure, NYHA Class II, well-controlled. Mild mitral regurgitation noted on echocardiogram. Stable on Losartan 50mg daily and Metoprolol 50mg daily for 10 weeks. Vitals: BP 122/74 mmHg, HR 62 bpm. No Active Asthma. No Chronic Kidney Disease. eGFR 88 mL/min. Not pregnant. Liver enzymes normal.",
+      "hidden_labs": {}
+    },
+    {
+      "patient_id": "P1_010",
+      "ehr": "77-year-old male with long-standing heart failure. History: Diagnosed with Heart Failure, NYHA Class III, managed for 8 years. Stable on Enalapril 10mg BID and Bisoprolol 10mg daily for 20 weeks. Vitals: BP 134/78 mmHg, HR 60 bpm. No Asthma. No Chronic Kidney Disease Stage 4 or higher. eGFR 52 mL/min. Not pregnant. No Severe hepatic impairment.",
+      "hidden_labs": {}
+    }
+  ]
+}
