@@ -10,14 +10,18 @@ Environment variables:
     HF_TOKEN       — Hugging Face token
     OPENAI_API_KEY — API key (may alias HF_TOKEN)
     ENV_URL        — environment server URL (default: http://localhost:8000)
+    MAX_TOKENS     — completion token budget per step (default: 1024)
 """
 
 from __future__ import annotations
 
 import json
 import os
+import re
 import sys
 import traceback
+from pathlib import Path
+from typing import Any
 
 from openai import OpenAI
 
@@ -27,11 +31,45 @@ from clinical_trial_env import ClinicalTrialAction, ClinicalTrialEnv
 # Configuration
 # ---------------------------------------------------------------------------
 
+
+def load_dotenv_file(path: str = ".env") -> None:
+    """Load simple KEY=VALUE pairs from a local .env file into os.environ."""
+    env_path = Path(path)
+    if not env_path.exists():
+        return
+
+    for raw_line in env_path.read_text(encoding="utf-8").splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+
+        key, value = line.split("=", 1)
+        key = key.strip()
+        value = value.strip().strip('"').strip("'")
+
+        # Preserve explicitly exported environment variables.
+        os.environ.setdefault(key, value)
+
+
+load_dotenv_file()
+
+
+def env_int(name: str, default: int) -> int:
+    """Read an integer env var with a safe fallback."""
+    raw = os.environ.get(name)
+    if raw is None:
+        return default
+    try:
+        return int(raw)
+    except ValueError:
+        return default
+
 API_BASE_URL = os.environ.get("API_BASE_URL", "")
 MODEL_NAME = os.environ.get("MODEL_NAME", "")
 HF_TOKEN = os.environ.get("HF_TOKEN", "")
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY", "") or HF_TOKEN
 ENV_URL = os.environ.get("ENV_URL", "http://localhost:8000")
+MAX_TOKENS = env_int("MAX_TOKENS", 8192)
 
 TASKS = ["task1", "task2", "task3"]
 MAX_LAB_REQUESTS_PER_PATIENT = 3  # safety cap
@@ -115,16 +153,153 @@ def build_user_prompt(ehr: str, patients_remaining: int) -> str:
     )
 
 
+def message_content_to_text(message: Any) -> str:
+    """Convert provider-specific message content shapes to plain text."""
+    content = getattr(message, "content", "")
+
+    if isinstance(content, str):
+        text = content
+    elif isinstance(content, list):
+        parts: list[str] = []
+        for part in content:
+            if isinstance(part, str):
+                parts.append(part)
+            elif isinstance(part, dict):
+                value = part.get("text")
+                if isinstance(value, str):
+                    parts.append(value)
+            else:
+                value = getattr(part, "text", None)
+                if isinstance(value, str):
+                    parts.append(value)
+        text = "".join(parts)
+    else:
+        text = str(content or "")
+
+    if text.strip():
+        return text
+
+    # Some OpenAI-compatible providers place text in model_extra fields.
+    model_extra = getattr(message, "model_extra", None)
+    if isinstance(model_extra, dict):
+        for key in ("reasoning_content", "content"):
+            value = model_extra.get(key)
+            if isinstance(value, str) and value.strip():
+                return value
+
+    return text
+
+
 def parse_llm_response(text: str) -> dict:
     """Extract a JSON action from the LLM response text."""
     text = text.strip()
-    # Strip markdown code fences if present
-    if text.startswith("```"):
-        lines = text.split("\n")
-        lines = [l for l in lines if not l.strip().startswith("```")]
-        text = "\n".join(lines).strip()
+    if not text:
+        raise ValueError("Empty model response")
 
-    return json.loads(text)
+    candidates = [text]
+    fenced_blocks = re.findall(r"```(?:json|javascript|js)?\s*([\s\S]*?)```", text, flags=re.IGNORECASE)
+    candidates.extend(block.strip() for block in fenced_blocks if block.strip())
+
+    decoder = json.JSONDecoder()
+
+    for candidate in candidates:
+        if not candidate:
+            continue
+
+        try:
+            parsed = json.loads(candidate)
+            if isinstance(parsed, dict):
+                return parsed
+        except json.JSONDecodeError:
+            pass
+
+        # Fallback: find first decodable JSON object inside free-form text.
+        for i, char in enumerate(candidate):
+            if char != "{":
+                continue
+            try:
+                parsed, _ = decoder.raw_decode(candidate[i:])
+            except json.JSONDecodeError:
+                continue
+            if isinstance(parsed, dict):
+                return parsed
+
+    preview = text.replace("\n", " ")[:160]
+    raise ValueError(f"No JSON object found in model response: {preview}")
+
+
+def normalize_action(action: dict) -> dict:
+    """Coerce model outputs into a valid ClinicalTrialAction-shaped dict."""
+    if not isinstance(action, dict):
+        return {"action_type": "reject", "reason": "Model returned non-object action"}
+
+    action_type = str(action.get("action_type", "")).strip().lower()
+
+    if action_type == "enroll":
+        trial_id = action.get("trial_id")
+        if isinstance(trial_id, str) and trial_id.strip():
+            return {"action_type": "enroll", "trial_id": trial_id.strip()}
+        return {"action_type": "reject", "reason": "Missing trial_id in model response"}
+
+    if action_type == "request_lab":
+        test_name = action.get("test_name")
+        if isinstance(test_name, str) and test_name.strip():
+            return {"action_type": "request_lab", "test_name": test_name.strip()}
+        return {"action_type": "reject", "reason": "Missing test_name in model response"}
+
+    if action_type == "reject":
+        reason = action.get("reason")
+        if isinstance(reason, str) and reason.strip():
+            return {"action_type": "reject", "reason": reason.strip()}
+        return {"action_type": "reject", "reason": "Did not meet eligibility criteria"}
+
+    return {"action_type": "reject", "reason": "Invalid action_type in model response"}
+
+
+def request_llm_action(client: OpenAI, system_prompt: str, user_prompt: str) -> dict:
+    """Request one action from the model with one strict-JSON retry."""
+    base_messages = [
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": user_prompt},
+    ]
+
+    completion = client.chat.completions.create(
+        model=MODEL_NAME,
+        messages=base_messages,
+        max_tokens=MAX_TOKENS,
+        temperature=0.0,
+    )
+    first_text = message_content_to_text(completion.choices[0].message)
+
+    try:
+        return normalize_action(parse_llm_response(first_text))
+    except Exception as first_error:
+        retry_messages = [
+            *base_messages,
+            {
+                "role": "user",
+                "content": (
+                    "Your previous response was invalid. Return ONLY one valid JSON object "
+                    'with double quotes and no extra text. Use one of: '
+                    '{"action_type":"enroll","trial_id":"<TRIAL_ID>"}, '
+                    '{"action_type":"reject","reason":"<brief reason>"}, '
+                    'or {"action_type":"request_lab","test_name":"<lab>"}.'
+                ),
+            },
+        ]
+
+        retry_completion = client.chat.completions.create(
+            model=MODEL_NAME,
+            messages=retry_messages,
+            max_tokens=MAX_TOKENS,
+            temperature=0.0,
+        )
+        retry_text = message_content_to_text(retry_completion.choices[0].message)
+
+        try:
+            return normalize_action(parse_llm_response(retry_text))
+        except Exception as second_error:
+            raise ValueError(f"{first_error}; retry failed: {second_error}")
 
 
 # ---------------------------------------------------------------------------
@@ -156,17 +331,7 @@ def run_task(client: OpenAI, task_id: str) -> dict:
             user_prompt = build_user_prompt(ehr, remaining)
 
             try:
-                completion = client.chat.completions.create(
-                    model=MODEL_NAME,
-                    messages=[
-                        {"role": "system", "content": system_prompt},
-                        {"role": "user", "content": user_prompt},
-                    ],
-                    max_tokens=256,
-                    temperature=0.0,
-                )
-                llm_text = completion.choices[0].message.content or ""
-                action = parse_llm_response(llm_text)
+                action = request_llm_action(client, system_prompt, user_prompt)
             except Exception as e:
                 # Fallback: reject if LLM fails
                 action = {"action_type": "reject", "reason": f"LLM error: {e}"}
@@ -176,6 +341,7 @@ def run_task(client: OpenAI, task_id: str) -> dict:
                 lab_requests_this_patient += 1
                 if lab_requests_this_patient > MAX_LAB_REQUESTS_PER_PATIENT:
                     action = {"action_type": "reject", "reason": "Max lab requests exceeded"}
+                    lab_requests_this_patient = 0
             else:
                 lab_requests_this_patient = 0
 

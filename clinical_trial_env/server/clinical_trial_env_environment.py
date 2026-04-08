@@ -79,6 +79,10 @@ class ClinicalTrialEnvironment(Environment):
         **_kwargs: Any,
     ) -> ClinicalTrialObservation:
         """Load a task and return the first patient observation."""
+        if task_id not in self._task_data:
+            raise ValueError(
+                f"Unknown task_id: {task_id!r}. Valid tasks: {list(self._task_data)}"
+            )
         task = self._task_data[task_id]
 
         self._trials = [TrialInfo(**t) for t in task["trials"]]
@@ -155,7 +159,10 @@ class ClinicalTrialEnvironment(Environment):
             # Append hidden lab data if available and not yet in EHR
             hidden_labs: dict[str, str] = current_patient.get("hidden_labs", {})
             test_name = action.test_name or ""
-            lab_result = hidden_labs.get(test_name)
+            lab_result = next(
+                (v for k, v in hidden_labs.items() if k.lower() == test_name.lower()),
+                None,
+            )
             if lab_result and test_name.lower() not in self._current_ehr.lower():
                 self._current_ehr += f"\n\n[Lab Result - {test_name}]: {lab_result}"
 
