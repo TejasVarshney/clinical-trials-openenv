@@ -1,0 +1,16 @@
+spec_version: 1
+name: clinical_trial_env
+type: space
+runtime: fastapi
+app: clinical_trial_env.server.app:app
+port: 8000
+tasks:
+  - id: task1
+    name: "Easy: Explicit Matching"
+    description: "10 patients, 1 trial. EHR language mirrors trial criteria exactly, so direct keyword matching is enough."
+  - id: task2
+    name: "Medium: Ontology & Inference"
+    description: "20 patients, 3 trials. The agent must infer eligibility from medications, vitals, imaging, and clinical proxies."
+  - id: task3
+    name: "Hard: Incomplete Data"
+    description: "30 patients, 5 trials. Some required labs are hidden, and the agent must request them before making a final decision."

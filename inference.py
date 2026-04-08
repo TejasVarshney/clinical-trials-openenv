@@ -182,31 +182,37 @@ def run_task(client: OpenAI, task_id: str) -> dict:
             try:
                 step_result = env_step(env, action)
             except Exception as e:
-                log("STEP", {
-                    "step": step_num,
-                    "request": action,
-                    "response": None,
-                    "reward": 0.0,
-                    "done": False,
-                    "error": str(e),
-                })
+                log(
+                    "STEP",
+                    {
+                        "step": step_num,
+                        "action": json.dumps(action, sort_keys=True),
+                        "reward": 0.0,
+                        "done": False,
+                        "error": str(e),
+                    },
+                )
                 continue
 
             response_body = step_result
             obs = response_body.get("observation", response_body)
-            reward = response_body.get("reward") or obs.get("reward", 0.0)
+            reward = response_body.get("reward")
+            if reward is None:
+                reward = obs.get("reward", 0.0)
             done = response_body.get("done", False) or obs.get("done", False)
             error = response_body.get("error")
             rewards.append(reward if reward is not None else 0.0)
 
-            log("STEP", {
-                "step": step_num,
-                "request": action,
-                "response": response_body,
-                "reward": reward,
-                "done": done,
-                "error": error,
-            })
+            log(
+                "STEP",
+                {
+                    "step": step_num,
+                    "action": json.dumps(action, sort_keys=True),
+                    "reward": reward,
+                    "done": done,
+                    "error": error,
+                },
+            )
 
         # Extract final score
         metadata = obs.get("metadata", {})
