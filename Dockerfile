@@ -7,11 +7,8 @@ ENV ENABLE_WEB_INTERFACE=true
 
 WORKDIR /app
 
-COPY clinical_trial_env ./clinical_trial_env
-COPY inference.py ./inference.py
-COPY README.md ./README.md
-COPY openenv.yaml ./openenv.yaml
-COPY pyproject.toml ./pyproject.toml
+# Copy the full repository so all submission files are present in the image.
+COPY . .
 
 RUN python -m pip install --no-cache-dir --upgrade pip \
     && python -m pip install --no-cache-dir -e .
