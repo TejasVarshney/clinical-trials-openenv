@@ -1,3 +1,13 @@
+---
+title: Clinical Trial Env
+emoji: 🏥
+colorFrom: blue
+colorTo: green
+sdk: docker
+app_port: 8000
+pinned: false
+---
+
 # Clinical Trial Patient Matcher
 
 OpenEnv environment for matching patients from unstructured EHR summaries to active clinical trials.
