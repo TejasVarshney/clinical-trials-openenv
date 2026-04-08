@@ -11,6 +11,7 @@ COPY clinical_trial_env ./clinical_trial_env
 COPY inference.py ./inference.py
 COPY README.md ./README.md
 COPY openenv.yaml ./openenv.yaml
+COPY clinical_trial_env ./pyproject.toml 
 
 RUN python -m pip install --no-cache-dir --upgrade pip \
     && python -m pip install --no-cache-dir -e ./clinical_trial_env
