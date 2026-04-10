@@ -64,9 +64,9 @@ def env_int(name: str, default: int) -> int:
     except ValueError:
         return default
 
-API_BASE_URL = os.environ.get("API_BASE_URL")
-MODEL_NAME = os.environ.get("MODEL_NAME")
-HF_TOKEN = os.getenv("HF_TOKEN")
+API_BASE_URL = os.environ.get("API_BASE_URL") or "https://router.huggingface.co/v1"
+MODEL_NAME = os.environ.get("MODEL_NAME") or "Qwen/Qwen2.5-72B-Instruct"
+HF_TOKEN = os.getenv("HF_TOKEN") or os.getenv("API_KEY")
 OPENAI_API_KEY = os.environ.get("API_KEY") or HF_TOKEN
 ENV_URL = os.environ.get("ENV_URL")
 MAX_TOKENS = env_int("MAX_TOKENS", 8192)
